@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <title>SIMPEDU</title>
     @include('includes.head')
-    @yield('title')
+    <link rel="stylesheet" href="{{asset('dist/css/customcss.css')}}" media="screen" title="no title" charset="utf-8">
   </head>
 
   <body class="hold-transition skin-white layout-top-nav">
@@ -10,17 +11,28 @@
 
       <header class="main-header">
         <nav class="navbar navbar-static-top">
-          <div class="container">
-            <div class="navbar-header">
-              <a href="{{ url('/')}}" class="logo">
+          <div class="container heightcustom">
+            <div class="navbar-header heightcustom" style="width:400px;">
+              <a class="logo" style="margin-top:5px;width:400px;height:80px;">
                 <!-- mini logo for sidebar mini 50x50 pixels -->
                 <span class="logo-mini">
                   <img src="{{asset('images/logokabtangerang.png')}}" alt="SPD" />
                 </span>
                 <!-- logo for regular state and mobile devices -->
                 <span class="logo-lg">
-                  <img src="{{asset('images/logokabtangerang.png')}}" alt="SPD" />
-                  &nbsp;&nbsp;<b>SIMPEDU</b>
+                  <div>
+                    <div class="boxlogo-custom">
+                      <img src="{{asset('images/logologinkabtangerang.png')}}" width="60px" alt="SPD" />
+                    </div>
+                    <div class="boxtitle-custom">
+                      <div class="boxtitlehead-custom">
+                        Simpedu
+                      </div>
+                      <div class="boxtitlebody-custom">
+                        Sistem Informasi Pengaduan Terpadu Kabupaten Tangerang
+                      </div>
+                    </div>
+                  </div>
                 </span>
               </a>
             </div>
@@ -28,7 +40,7 @@
         </nav>
       </header>
       <!-- Full Width Column -->
-      <div class="content-wrapper">
+      <div class="content-wrapper custombackground">
         <div class="container">
           <!-- Main content -->
           <section class="content">
@@ -48,21 +60,21 @@
                     </ol>
                     <div class="carousel-inner">
                       <div class="item active left">
-                        <img src="http://placehold.it/900x500/39CCCC/ffffff&amp;text=I+Love+Bootstrap" alt="First slide">
+                        <img src="{{asset('images/slider3.jpg')}}" alt="First slide">
                         <div class="carousel-caption">
-                          First Slide
+                          Judul : Cara Pengaduan
                         </div>
                       </div>
                       <div class="item next left">
-                        <img src="http://placehold.it/900x500/3c8dbc/ffffff&amp;text=I+Love+Bootstrap" alt="Second slide">
+                        <img src="{{asset('images/slider3.jpg')}}" alt="Second slide">
                         <div class="carousel-caption">
-                          Second Slide
+                          Judul : Cara Pengaduan
                         </div>
                       </div>
                       <div class="item">
-                        <img src="http://placehold.it/900x500/f39c12/ffffff&amp;text=I+Love+Bootstrap" alt="Third slide">
+                        <img src="{{asset('images/slider3.jpg')}}" alt="Third slide">
                         <div class="carousel-caption">
-                          Third Slide
+                          Judul : Cara Pengaduan
                         </div>
                       </div>
                     </div>
@@ -78,7 +90,7 @@
             </div><!-- /.col -->
 
             <div class="col-md-3">
-              <div class="nav-tabs-custom">
+              <div class="nav-tabs-custom" style='max-height:467px'>
                 <ul class="nav nav-tabs">
                   <li class="active"><a href="#login" data-toggle="tab">Login</a></li>
                   <li><a href="#daftar" data-toggle="tab">Daftar</a></li>
@@ -86,11 +98,13 @@
                   <div class="tab-content">
                     <div class="active tab-pane" id="login">
                       <div class="login-box-body">
-                        <p class="login-box-msg">Login Pengguna</p>
+                        <p class="login-box-msg"><img src="{{asset('images/logokabtangerang.png')}}" alt="SPD" />
+                        &nbsp;&nbsp;<b>SIMPEDU</b></p>
+                        <p class="login-box-msg"><b>Login Pengguna</b></p>
                         <form action="{{ url('login') }}" method="post">
                           {!! csrf_field() !!}
                           <div class="form-group has-feedback">
-                            <input name="email" type="email" class="form-control" placeholder="Email">
+                            <input name="email" type="text" class="form-control" placeholder="Email">
                             <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
                           </div>
                           <div class="form-group has-feedback">
@@ -110,13 +124,15 @@
                             </div><!-- /.col -->
                           </div>
                         </form>
-                        <a href="#">Lupa Password</a><br>
+                        <a href="#">Lupa Password? Klik disini.</a><br>
 
                       </div><!-- /.login-box-body -->
                     </div>
                     <div class="tab-pane" id="daftar">
                       <div class="register-box-body">
-                        <p class="login-box-msg">Daftar Baru</p>
+                        {{-- <p class="login-box-msg"><img src="{{asset('images/logokabtangerang.png')}}" alt="SPD" />
+                        &nbsp;&nbsp;<b>SIMPEDU</b></p> --}}
+                        <p class="login-box-msg"><b>Daftar Pengguna Baru</b></p>
                         <form action="{{ url('register') }}" method="post">
                           {!! csrf_field() !!}
                           <div class="form-group has-feedback">
@@ -126,6 +142,10 @@
                           <div class="form-group has-feedback">
                             <input name="email" type="email" class="form-control" placeholder="Email">
                             <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+                          </div>
+                          <div class="form-group has-feedback">
+                            <input name="telp" type="text" class="form-control" placeholder="No. Telp">
+                            <span class="glyphicon glyphicon-phone form-control-feedback"></span>
                           </div>
                           <div class="form-group has-feedback">
                             <input name="password" type="password" class="form-control" placeholder="Password">
@@ -156,183 +176,594 @@
           </div>
 
           <div class="row">
-            <div class="col-md-9">
-              <div class="nav-tabs-custom">
-                <ul class="nav nav-tabs">
-                  <li class="active"><a href="#kesehatan" data-toggle="tab" aria-expanded="true">Kesehatan</a></li>
-                  <li class=""><a href="#perhubungan" data-toggle="tab" aria-expanded="false">Perhubungan</a></li>
-                  <li class=""><a href="#pendidikan" data-toggle="tab" aria-expanded="false">Pendidikan</a></li>
-                  <li class=""><a href="#kependudukan" data-toggle="tab" aria-expaded="false">Kependudukan</a></li>
-                  <li class=""><a href="#tenagakerja" data-toggle="tab" aria-expaded="false">Tenaga Kerja</a></li>
-                  <li class=""><a href="#polkam" data-toggle="tab" aria-expaded="false">Politik dan Keamanan</a></li>
-                  <li class=""><a href="#geografi" data-toggle="tab" aria-expaded="false">Geografi</a></li>
-                </ul>
-                <div class="tab-content">
-                  <div class="tab-pane active" id="kesehatan">
-                    <!-- Post -->
-                    <div class="post">
-                      <div class="user-block">
-                        <img class="img-circle img-bordered-sm" src="{{ asset('/dist/img/user1-128x128.jpg') }}" alt="user image">
-                        <span class="username">
-                          <a href="#">Jonathan Burke Jr.</a>
-                          <!-- <a href="#" class="pull-right btn-box-tool"><i class="fa fa-times"></i></a> -->
-                        </span>
-                        <span class="description">Shared publicly - 7:30 PM today</span>
-                      </div><!-- /.user-block -->
-                      <p>
-                        Lorem ipsum represents a long-held tradition for designers,
-                        typographers and the like. Some people hate it and argue for
-                        its demise, but others ignore the hate as they create awesome
-                        tools to help create filler text for everyone from bacon lovers
-                        to Charlie Sheen fans.
-                      </p>
-                      {{-- <ul class="list-inline">
-                        <li><a href="#" class="link-black text-sm"><i class="fa fa-share margin-r-5"></i> Share</a></li>
-                        <li><a href="#" class="link-black text-sm"><i class="fa fa-thumbs-o-up margin-r-5"></i> Like</a></li>
-                        <!-- <li class="pull-right"><a href="#" class="link-black text-sm"><i class="fa fa-comments-o margin-r-5"></i> Comments (5)</a></li> -->
-                      </ul> --}}
-                    </div><!-- /.post -->
-                    <!-- Post -->
-                    <div class="post">
-                      <div class="user-block">
-                        <img class="img-circle img-bordered-sm" src="{{ asset('/dist/img/user7-128x128.jpg') }}" alt="user image">
-                        <span class="username">
-                          <a href="#">Sarah Ross</a>
-                          <!-- <a href="#" class="pull-right btn-box-tool"><i class="fa fa-times"></i></a> -->
-                        </span>
-                        <span class="description">Shared publicly - 7:30 PM today</span>
-                      </div><!-- /.user-block -->
-                      <p>
-                        Lorem ipsum represents a long-held tradition for designers,
-                        typographers and the like. Some people hate it and argue for
-                        its demise, but others ignore the hate as they create awesome
-                        tools to help create filler text for everyone from bacon lovers
-                        to Charlie Sheen fans.
-                      </p>
-                      {{-- <ul class="list-inline">
-                        <li><a href="#" class="link-black text-sm"><i class="fa fa-share margin-r-5"></i> Share</a></li>
-                        <li><a href="#" class="link-black text-sm"><i class="fa fa-thumbs-o-up margin-r-5"></i> Like</a></li>
-                        <!-- <li class="pull-right"><a href="#" class="link-black text-sm"><i class="fa fa-comments-o margin-r-5"></i> Comments (5)</a></li> -->
-                      </ul> --}}
-                    </div><!-- /.post -->
-                  </div><!-- /.tab-pane -->
-                  <div class="tab-pane" id="perhubungan">
-                    <!-- Post -->
-                    <div class="post">
-                      <div class="user-block">
-                        <img class="img-circle img-bordered-sm" src="{{ asset('/dist/img/user5-128x128.jpg') }}" alt="user image">
-                        <span class="username">
-                          <a href="#">Pelapor</a>
-                          <!-- <a href="#" class="pull-right btn-box-tool"><i class="fa fa-times"></i></a> -->
-                        </span>
-                        <span class="description">Shared publicly - 7:30 PM today</span>
-                      </div><!-- /.user-block -->
-                      <p>
-                        Lorem ipsum represents a long-held tradition for designers,
-                        typographers and the like. Some people hate it and argue for
-                        its demise, but others ignore the hate as they create awesome
-                        tools to help create filler text for everyone from bacon lovers
-                        to Charlie Sheen fans.
-                      </p>
-                      {{-- <ul class="list-inline">
-                        <li><a href="#" class="link-black text-sm"><i class="fa fa-share margin-r-5"></i> Share</a></li>
-                        <li><a href="#" class="link-black text-sm"><i class="fa fa-thumbs-o-up margin-r-5"></i> Like</a></li>
-                        <!-- <li class="pull-right"><a href="#" class="link-black text-sm"><i class="fa fa-comments-o margin-r-5"></i> Comments (5)</a></li> -->
-                      </ul> --}}
-                      <div class="box-footer box-comments">
-                        <div class="box-comment">
-                          <!-- User image -->
-                          <img class="img-circle img-sm" src="{{ asset('/dist/img/user3-128x128.jpg') }}" alt="user image">
-                          <div class="comment-text">
-                            <span class="username">
-                              Administrator
-                              <span class="text-muted pull-right">8:03 PM Today</span>
-                            </span><!-- /.username -->
-                            It is a long established fact that a reader will be distracted
-                            by the readable content of a page when looking at its layout.
-                          </div><!-- /.comment-text -->
-                        </div><!-- /.box-comment -->
-                        <div class="box-comment">
-                          <!-- User image -->
-                          <img class="img-circle img-sm" src="{{ asset('/dist/img/user8-128x128.jpg') }}" alt="user image">
-                          <div class="comment-text">
-                            <span class="username">
-                              SKPD Perhubungan
-                              <span class="text-muted pull-right">8:03 PM Today</span>
-                            </span><!-- /.username -->
-                            The point of using Lorem Ipsum is that it has a more-or-less
-                            normal distribution of letters, as opposed to using
-                            'Content here, content here', making it look like readable English.
-                          </div><!-- /.comment-text -->
-                        </div><!-- /.box-comment -->
-                      </div>
-                    </div><!-- /.post -->
-                  </div><!-- /.tab-pane -->
+            <div class="col-lg-3 col-xs-12">
+              <!-- small box -->
+              <div class="small-box bg-teal">
+                <div class="inner">
+                  <h3>150</h3>
+                  <p>Jumlah Pengaduan</p>
+                </div>
+                <div class="icon">
+                  <i class="ion ion-speakerphone"></i>
+                </div>
+                {{-- <a href="{{url('lihatpengaduan')}}" class="small-box-footer">Lihat Data Selengkapnya <i class="fa fa-arrow-circle-right"></i></a> --}}
+              </div>
+            </div><!-- ./col -->
+            <div class="col-lg-3 col-xs-12">
+              <!-- small box -->
+              <div class="small-box bg-purple">
+                <div class="inner">
+                  <h3>53<sup style="font-size: 20px">%</sup></h3>
+                  <p>Pengaduan Terproses</p>
+                </div>
+                <div class="icon">
+                  <i class="ion ion-stats-bars"></i>
+                </div>
+                {{-- <a href="{{url('lihatpengaduan')}}" class="small-box-footer">Lihat Data Selengkapnya <i class="fa fa-arrow-circle-right"></i></a> --}}
+              </div>
+            </div><!-- ./col -->
+            <div class="col-lg-3 col-xs-12">
+              <!-- small box -->
+              <div class="small-box bg-maroon">
+                <div class="inner">
+                  <h3>44</h3>
+                  <p>Pengguna Terdaftar</p>
+                </div>
+                <div class="icon">
+                  <i class="ion ion-person-stalker"></i>
+                </div>
+                {{-- <a href="{{url('datawarga')}}" class="small-box-footer">Lihat Data Selengkapnya <i class="fa fa-arrow-circle-right"></i></a> --}}
+              </div>
+            </div><!-- ./col -->
 
-                  <div class="tab-pane" id="pendidikan">
-                    <!-- Post -->
-                    <div class="post">
-                      <div class="user-block">
-                        <img class="img-circle img-bordered-sm" src="{{ asset('/dist/img/user4-128x128.jpg') }}" alt="user image">
-                        <span class="username">
-                          <a href="#">Jonathan Burke Jr.</a>
-                          <!-- <a href="#" class="pull-right btn-box-tool"><i class="fa fa-times"></i></a> -->
-                        </span>
-                        <span class="description">Shared publicly - 7:30 PM today</span>
-                      </div><!-- /.user-block -->
-                      <p>
-                        Lorem ipsum represents a long-held tradition for designers,
-                        typographers and the like. Some people hate it and argue for
-                        its demise, but others ignore the hate as they create awesome
-                        tools to help create filler text for everyone from bacon lovers
-                        to Charlie Sheen fans.
-                      </p>
-                      {{-- <ul class="list-inline">
-                        <li><a href="#" class="link-black text-sm"><i class="fa fa-share margin-r-5"></i> Share</a></li>
-                        <li><a href="#" class="link-black text-sm"><i class="fa fa-thumbs-o-up margin-r-5"></i> Like</a></li>
-                        <!-- <li class="pull-right"><a href="#" class="link-black text-sm"><i class="fa fa-comments-o margin-r-5"></i> Comments (5)</a></li> -->
-                      </ul> --}}
-                    </div><!-- /.post -->
-                  </div><!-- /.tab-pane -->
-                </div><!-- /.tab-content -->
-              </div><!-- /.nav-tabs-custom -->
-            </div>
+            <div class="col-lg-3 col-xs-12">
+              <!-- small box -->
+              <div class="small-box bg-yellow">
+                <div class="inner">
+                  <h3>12378</h3>
+                  <p>Jumlah Views</p>
+                </div>
+                <div class="icon">
+                  <i class="ion ion-eye"></i>
+                </div>
+                {{-- <a href="{{url('datawarga')}}" class="small-box-footer">Lihat Data Selengkapnya <i class="fa fa-arrow-circle-right"></i></a> --}}
+              </div>
+            </div><!-- ./col -->
+          </div>
 
-            <div class="col-md-3">
-                <!-- About Me Box -->
-              <div class="box box-primary">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="box box-solid">
                 <div class="box-header with-border">
-                  <h3 class="box-title">Laporan Terbaru</h3>
+                  <img src="{{asset('images/logokabtangerang.png')}}">
+                  <h3 class="box-title">&nbsp;&nbsp;&nbsp;Tentang SIMPEDU</h3>
                 </div><!-- /.box-header -->
-                <div class="box-body">
-                  <strong><i class="fa fa-book margin-r-5"></i>  Pendidikan</strong>
-                  <p class="text-muted">
-                    B.S. in Computer Science from the University of Tennessee at Knoxville
-                  </p>
-
-                  <hr>
-
-                  <strong><i class="fa fa-map-marker margin-r-5"></i> Geografi</strong>
-                  <p class="text-muted">Malibu, California</p>
-
-                  <hr>
-
-                  {{-- <strong><i class="fa fa-pencil margin-r-5"></i> Skills</strong>
-                  <p>
-                    <span class="label label-danger">UI Design</span>
-                    <span class="label label-success">Coding</span>
-                    <span class="label label-info">Javascript</span>
-                    <span class="label label-warning">PHP</span>
-                    <span class="label label-primary">Node.js</span>
-                  </p>
-
-                  <hr> --}}
-
-                  <strong><i class="fa fa-file-text-o margin-r-5"></i> Kependudukan</strong>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam fermentum enim neque.</p>
+                <div class="box-body clearfix">
+                  <blockquote class="pull-left">
+                    <p style="font-size:15px;">
+                      SIMPEDU (Sistem Informasi Pengaduan Terpadu) adalah sebuah sarana pengaduan untuk warga Kabupaten Tangerang berbasis website yang mudah diakses dan terpadu dengan 36 Satuan Kerja Pemerintah Daerah di Kabupaten Tangerang. SIMPEDU dikembangkan dalam rangka meningkatkan partisipasi masyarakat untuk pengawasan program dan kinerja pemerintah daerah dalam penyelenggaraan pembangunan dan pelayanan publik.
+                    </p>
+                    <small>Pemerintah Kabupaten Tangerang</small>
+                  </blockquote>
                 </div><!-- /.box-body -->
               </div><!-- /.box -->
-            </div><!-- /.col -->
+            </div>
+          </div>
+
+          <div class="row">
+            <section class="col-lg-3">
+              <!-- Populer Pertama -->
+              <div class="box box-primary">
+                <div class="box-header with-border">
+                <div class="user-block">
+                  <img class="img-circle img-bordered-sm" src="{{asset('images/stars.png')}}" alt="user image">
+                  <span class="username">
+                      <h4>Kependudukan</h4>
+                  </span>
+                </div>
+                </div><!-- /.box-header -->
+                <div class="box-body">
+                  <ul class="products-list product-list-in-box">
+                    <li class="item">
+                      <div class="product-img">
+                        <img src="dist/img/user4-128x128.jpg">
+                      </div>
+                      <div class="product-info">
+                        <a href="" class="product-title">Amanda Satyarini</a>
+                        <span class="product-description-custom">
+                          Yth. SKPD Kabupaten Tangerang terkait, Jika No. KK tidak terbaca ...
+                        </span>
+                        <a href="{{url('detail/pengaduan-warga')}}">
+                          [Selengkapnya]
+                        </a>
+                      </div>
+                    </li><!-- /.item -->
+                    <li class="item">
+                      <div class="product-img">
+                        <img src="dist/img/user5-128x128.jpg">
+                      </div>
+                      <div class="product-info">
+                        <a href="" class="product-title">Bayu Widia</a>
+                        <span class="product-description-custom">
+                          Yth. SKPD Kabupaten Tangerang terkait, Jika No. KK tidak terbaca ...
+                        </span>
+                        <a href="{{url('detail/pengaduan-warga')}}">
+                          [Selengkapnya]
+                        </a>
+                      </div>
+                    </li><!-- /.item -->
+                    <li class="item">
+                      <div class="product-img">
+                        <img src="dist/img/user1-128x128.jpg">
+                      </div>
+                      <div class="product-info">
+                        <a href="" class="product-title">Dudy</a>
+                        <span class="product-description-custom">
+                          Yth. SKPD Kabupaten Tangerang terkait, Jika No. KK tidak terbaca ...
+                        </span>
+                        <a href="{{url('detail/pengaduan-warga')}}">
+                          [Selengkapnya]
+                        </a>
+                      </div>
+                    </li><!-- /.item -->
+                  </ul>
+                </div><!-- /.box-body -->
+                <div class="box-footer text-center">
+                  <a href="{{url('viewall/topik-aduan')}}" class="label uppercase bg-blue">Lihat Semua</a>
+                </div><!-- /.box-footer -->
+              </div>
+            </section>
+            <!-- Akhir Popular Pertama -->
+
+            <!-- Populer Kedua -->
+            <section class="col-lg-3">
+              <div class="box box-danger">
+                <div class="box-header with-border">
+                  <div class="user-block">
+                    <img class="img-circle img-bordered-sm" src="{{asset('images/stars.png')}}" alt="user image">
+                    <span class="username">
+                        <h4>Kesehatan</h4>
+                    </span>
+                  </div>
+                </div><!-- /.box-header -->
+                <div class="box-body">
+                  <ul class="products-list product-list-in-box">
+                    <li class="item">
+                      <div class="product-img">
+                        <img src="dist/img/user6-128x128.jpg">
+                      </div>
+                      <div class="product-info">
+                        <a href="" class="product-title">Anonymous</a>
+                        <span class="product-description-custom">
+                          Yth. SKPD Kabupaten Tangerang terkait, Jika No. KK tidak terbaca ...
+                        </span>
+                        <a href="#">
+                          [Selengkapnya]
+                        </a>
+                      </div>
+                    </li><!-- /.item -->
+                    <li class="item">
+                      <div class="product-img">
+                        <img src="dist/img/user7-128x128.jpg">
+                      </div>
+                      <div class="product-info">
+                        <a href="" class="product-title">Silviano</a>
+                        <span class="product-description-custom">
+                          Yth. SKPD Kabupaten Tangerang terkait, Jika No. KK tidak terbaca ...
+                        </span>
+                        <a href="#">
+                          [Selengkapnya]
+                        </a>
+                      </div>
+                    </li><!-- /.item -->
+                    <li class="item">
+                      <div class="product-img">
+                        <img src="dist/img/user8-128x128.jpg">
+                      </div>
+                      <div class="product-info">
+                        <a href="" class="product-title">Maryani</a>
+                        <span class="product-description-custom">
+                          Yth. SKPD Kabupaten Tangerang terkait, Jika No. KK tidak terbaca ...
+                        </span>
+                        <a href="#">
+                          [Selengkapnya]
+                        </a>
+                      </div>
+                    </li><!-- /.item -->
+                  </ul>
+                </div><!-- /.box-body -->
+                <div class="box-footer text-center">
+                  <a href="" class="label uppercase bg-blue">Lihat Semua</a>
+                </div><!-- /.box-footer -->
+              </div>
+            </section>
+
+            <!-- Populer Ketiga -->
+            <section class="col-lg-3">
+              <div class="box box-warning">
+                <div class="box-header with-border">
+                  <div class="user-block">
+                    <img class="img-circle img-bordered-sm" src="{{asset('images/stars.png')}}" alt="user image">
+                    <span class="username">
+                        <h4>Ketenagakerjaan</h4>
+                    </span>
+                  </div>
+                </div>
+                <div class="box-body">
+                  <ul class="products-list product-list-in-box">
+                    <li class="item">
+                      <div class="product-img">
+                        <img src="dist/img/user1-128x128.jpg">
+                      </div>
+                      <div class="product-info">
+                        <a href="" class="product-title">Parjo</a>
+                        <span class="product-description-custom">
+                          Yth. SKPD Kabupaten Tangerang terkait, Jika No. KK tidak terbaca ...
+                        </span>
+                        <a href="#">
+                          [Selengkapnya]
+                        </a>
+                      </div>
+                    </li><!-- /.item -->
+                    <li class="item">
+                      <div class="product-img">
+                        <img src="dist/img/user3-128x128.jpg">
+                      </div>
+                      <div class="product-info">
+                        <a href="" class="product-title">Prita</a>
+                        <span class="product-description-custom">
+                          Yth. SKPD Kabupaten Tangerang terkait, Jika No. KK tidak terbaca ...
+                        </span>
+                        <a href="#">
+                          [Selengkapnya]
+                        </a>
+                      </div>
+                    </li><!-- /.item -->
+                    <li class="item">
+                      <div class="product-img">
+                        <img src="dist/img/user4-128x128.jpg">
+                      </div>
+                      <div class="product-info">
+                        <a href="" class="product-title">Tarjo</a>
+                        <span class="product-description-custom">
+                          Yth. SKPD Kabupaten Tangerang terkait, Jika No. KK tidak terbaca ...
+                        </span>
+                        <a href="#">
+                          [Selengkapnya]
+                        </a>
+                      </div>
+                    </li><!-- /.item -->
+                  </ul>
+                </div><!-- /.box-body -->
+                <div class="box-footer text-center">
+                  <a href="" class="label uppercase bg-blue">Lihat Semua</a>
+                </div><!-- /.box-footer -->
+              </div>
+            </section>
+
+            <!-- Populer Keempat -->
+            <section class="col-lg-3">
+              <div class="box box-success">
+                <div class="box-header with-border">
+                  <div class="user-block">
+                    <img class="img-circle img-bordered-sm" src="{{asset('images/stars.png')}}" alt="user image">
+                    <span class="username">
+                        <h4>Pendidikan</h4>
+                    </span>
+                  </div>
+                </div><!-- /.box-header -->
+                <div class="box-body">
+                  <ul class="products-list product-list-in-box">
+                    <li class="item">
+                      <div class="product-img">
+                        <img src="dist/img/user5-128x128.jpg">
+                      </div>
+                      <div class="product-info">
+                        <a href="" class="product-title">Silvi</a>
+                        <span class="product-description-custom">
+                          Yth. SKPD Kabupaten Tangerang terkait, Jika No. KK tidak terbaca ...
+                        </span>
+                        <a href="#">
+                          [Selengkapnya]
+                        </a>
+                      </div>
+                    </li><!-- /.item -->
+                    <li class="item">
+                      <div class="product-img">
+                        <img src="dist/img/user6-128x128.jpg">
+                      </div>
+                      <div class="product-info">
+                        <a href="" class="product-title">Budi Karno</a>
+                        <span class="product-description-custom">
+                          Yth. SKPD Kabupaten Tangerang terkait, Jika No. KK tidak terbaca ...
+                        </span>
+                        <a href="#">
+                          [Selengkapnya]
+                        </a>
+                      </div>
+                    </li><!-- /.item -->
+                    <li class="item">
+                      <div class="product-img">
+                        <img src="dist/img/user7-128x128.jpg">
+                      </div>
+                      <div class="product-info">
+                        <a href="" class="product-title">Anonymous</a>
+                        <span class="product-description-custom">
+                          Yth. SKPD Kabupaten Tangerang terkait, Jika No. KK tidak terbaca ...
+                        </span>
+                        <a href="#">
+                          [Selengkapnya]
+                        </a>
+                      </div>
+                    </li><!-- /.item -->
+                  </ul>
+                </div><!-- /.box-body -->
+                <div class="box-footer text-center">
+                  <a href="" class="label uppercase bg-blue">Lihat Semua</a>
+                </div><!-- /.box-footer -->
+              </div>
+            </section>
+            <!-- Populer 4 Habis -->
+
+            <!-- Populer KeLima -->
+            <section class="col-lg-3">
+              <div class="box box-primary">
+                <div class="box-header with-border">
+                  <div class="user-block">
+                    <img class="img-circle img-bordered-sm" src="{{asset('images/stars.png')}}" alt="user image">
+                    <span class="username">
+                        <h4>Jalan</h4>
+                    </span>
+                  </div>
+                </div><!-- /.box-header -->
+                <div class="box-body">
+                  <ul class="products-list product-list-in-box">
+                    <li class="item">
+                      <div class="product-img">
+                        <img src="dist/img/user3-128x128.jpg">
+                      </div>
+                      <div class="product-info">
+                        <a href="" class="product-title">Clara Lupita</a>
+                        <span class="product-description-custom">
+                          Yth. SKPD Kabupaten Tangerang terkait, Jika No. KK tidak terbaca ...
+                        </span>
+                        <a href="#">
+                          [Selengkapnya]
+                        </a>
+                      </div>
+                    </li><!-- /.item -->
+                    <li class="item">
+                      <div class="product-img">
+                        <img src="dist/img/user2-160x160.jpg">
+                      </div>
+                      <div class="product-info">
+                        <a href="" class="product-title">Bambang Pamungkis</a>
+                        <span class="product-description-custom">
+                          Yth. SKPD Kabupaten Tangerang terkait, Jika No. KK tidak terbaca ...
+                        </span>
+                        <a href="#">
+                          [Selengkapnya]
+                        </a>
+                      </div>
+                    </li><!-- /.item -->
+                    <li class="item">
+                      <div class="product-img">
+                        <img src="dist/img/user2-160x160.jpg">
+                      </div>
+                      <div class="product-info">
+                        <a href="" class="product-title">Bambang Pamungkis</a>
+                        <span class="product-description-custom">
+                          Yth. SKPD Kabupaten Tangerang terkait, Jika No. KK tidak terbaca ...
+                        </span>
+                        <a href="#">
+                          [Selengkapnya]
+                        </a>
+                      </div>
+                    </li><!-- /.item -->
+                  </ul>
+                </div><!-- /.box-body -->
+                <div class="box-footer text-center">
+                  <a href="" class="label uppercase bg-blue">Lihat Semua</a>
+                </div><!-- /.box-footer -->
+              </div>
+            </section>
+            <!-- Populer 5 Habis -->
+
+            <!-- Populer KeEnam -->
+            <section class="col-lg-3">
+              <div class="box box-danger">
+                <div class="box-header with-border">
+                  <div class="user-block">
+                    <img class="img-circle img-bordered-sm" src="{{asset('images/stars.png')}}" alt="user image">
+                    <span class="username">
+                        <h4>Perizinan</h4>
+                    </span>
+                  </div>
+                </div><!-- /.box-header -->
+                <div class="box-body">
+                  <ul class="products-list product-list-in-box">
+                    <li class="item">
+                      <div class="product-img">
+                        <img src="dist/img/user4-128x128.jpg">
+                      </div>
+                      <div class="product-info">
+                        <a href="" class="product-title">Contoh</a>
+                        <span class="product-description-custom">
+                          Yth. SKPD Kabupaten Tangerang terkait, Jika No. KK tidak terbaca ...
+                        </span>
+                        <a href="#">
+                          [Selengkapnya]
+                        </a>
+                      </div>
+                    </li><!-- /.item -->
+                    <li class="item">
+                      <div class="product-img">
+                        <img src="dist/img/user5-128x128.jpg">
+                      </div>
+                      <div class="product-info">
+                        <a href="" class="product-title">Contoh</a>
+                        <span class="product-description-custom">
+                          Yth. SKPD Kabupaten Tangerang terkait, Jika No. KK tidak terbaca ...
+                        </span>
+                        <a href="#">
+                          [Selengkapnya]
+                        </a>
+                      </div>
+                    </li><!-- /.item -->
+                    <li class="item">
+                      <div class="product-img">
+                        <img src="dist/img/user6-128x128.jpg">
+                      </div>
+                      <div class="product-info">
+                        <a href="" class="product-title">Contoh</a>
+                        <span class="product-description-custom">
+                          Yth. SKPD Kabupaten Tangerang terkait, Jika No. KK tidak terbaca ...
+                        </span>
+                        <a href="#">
+                          [Selengkapnya]
+                        </a>
+                      </div>
+                    </li><!-- /.item -->
+                  </ul>
+                </div><!-- /.box-body -->
+                <div class="box-footer text-center">
+                  <a href="" class="label uppercase bg-blue">Lihat Semua</a>
+                </div><!-- /.box-footer -->
+              </div>
+            </section>
+            <!-- Populer 6 Habis -->
+
+            <!-- Populer KeTujuh -->
+            <section class="col-lg-3">
+              <div class="box box-warning">
+                <div class="box-header with-border">
+                  <div class="user-block">
+                    <img class="img-circle img-bordered-sm" src="{{asset('images/stars.png')}}" alt="user image">
+                    <span class="username">
+                        <h4>Perdagangan</h4>
+                    </span>
+                  </div>
+                </div><!-- /.box-header -->
+                <div class="box-body">
+                  <ul class="products-list product-list-in-box">
+                    <li class="item">
+                      <div class="product-img">
+                        <img src="dist/img/user7-128x128.jpg">
+                      </div>
+                      <div class="product-info">
+                        <a href="" class="product-title">Contoh</a>
+                        <span class="product-description-custom">
+                          Yth. SKPD Kabupaten Tangerang terkait, Jika No. KK tidak terbaca ...
+                        </span>
+                        <a href="#">
+                          [Selengkapnya]
+                        </a>
+                      </div>
+                    </li><!-- /.item -->
+                    <li class="item">
+                      <div class="product-img">
+                        <img src="dist/img/user4-128x128.jpg">
+                      </div>
+                      <div class="product-info">
+                        <a href="" class="product-title">Contoh</a>
+                        <span class="product-description-custom">
+                          Yth. SKPD Kabupaten Tangerang terkait, Jika No. KK tidak terbaca ...
+                        </span>
+                        <a href="#">
+                          [Selengkapnya]
+                        </a>
+                      </div>
+                    </li><!-- /.item -->
+                    <li class="item">
+                      <div class="product-img">
+                        <img src="dist/img/user8-128x128.jpg">
+                      </div>
+                      <div class="product-info">
+                        <a href="" class="product-title">Contoh</a>
+                        <span class="product-description-custom">
+                          Yth. SKPD Kabupaten Tangerang terkait, Jika No. KK tidak terbaca ...
+                        </span>
+                        <a href="#">
+                          [Selengkapnya]
+                        </a>
+                      </div>
+                    </li><!-- /.item -->
+                  </ul>
+                </div><!-- /.box-body -->
+                <div class="box-footer text-center">
+                  <a href="" class="label uppercase bg-blue">Lihat Semua</a>
+                </div><!-- /.box-footer -->
+              </div>
+            </section>
+            <!-- Populer 7 Habis -->
+
+            <!-- List Tidak Populer -->
+            <section class="col-lg-3">
+              <div class="box box-success">
+                <div class="box-header with-border">
+                  <div class="user-block">
+                    <img class="img-circle img-bordered-sm" src="{{asset('images/megaphone.png')}}" alt="user image">
+                    <span class="username">
+                        <h4>Pengaduan Lainnya</h4>
+                    </span>
+                  </div>
+                </div><!-- /.box-header -->
+                <div class="box-body">
+                    <ul class="nav nav-pills nav-stacked">
+                      <li>
+                        <a href="{{url('viewall/topik-aduan')}}">
+                          Pengaduan Listrik
+                        </a>
+                      </li>
+                      <li>
+                        <a href="{{url('viewall/topik-aduan')}}">
+                          Lalu Lintas
+                        </a>
+                      </li>
+                      <li>
+                        <a href="{{url('viewall/topik-aduan')}}">
+                          Kerusakan Bangunan
+                        </a>
+                      </li>
+                      <li>
+                        <a href="{{url('viewall/topik-aduan')}}">
+                          Pelayanan Administrasi
+                        </a>
+                      </li>
+                      <li>
+                        <a href="{{url('viewall/topik-aduan')}}">
+                          Pariwisata
+                        </a>
+                      </li>
+                      <li>
+                        <a href="{{url('viewall/topik-aduan')}}">
+                          Kebudayaan
+                        </a>
+                      </li>
+                      <li>
+                        <a href="{{url('viewall/topik-aduan')}}">
+                          Perpajakan
+                        </a>
+                      </li>
+                      <li>
+                        <a href="{{url('viewall/topik-aduan')}}">
+                          Transportasi Publik
+                        </a>
+                      </li>
+                      <li>
+                        <a href="{{url('viewall/topik-aduan')}}">
+                          Lainnya
+                        </a>
+                      </li>
+                    </ul>
+                </div><!-- /.box-body -->
+                <div class="box-footer text-center">
+                  <a href="" class="label uppercase bg-blue">Lihat Semua</a>
+                </div><!-- /.box-footer -->
+              </div>
+            </section>
+            <!-- List tidak poluler -->
+
           </div><!-- /.row -->
           </section><!-- /.content -->
         </div><!-- /.container -->
@@ -342,7 +773,7 @@
           <div class="pull-right hidden-xs">
             <b>Version</b> 1.0.0
           </div>
-          <strong>Copyright © 20162017 <a href="http://9tins.com">9Tins Project</a>.</strong> All rights reserved.
+          <strong>Copyright © 2016 - 2017 <a href="http://9tins.com">Pemerintahan Kabupaten Tangerang</a>.</strong> All rights reserved.
         </div><!-- /.container -->
       </footer>
     </div><!-- ./wrapper -->

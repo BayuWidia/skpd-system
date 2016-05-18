@@ -1,4 +1,4 @@
-<a href="index2.html" class="logo">
+<a href="{{url('dashboard')}}" class="logo">
   <!-- mini logo for sidebar mini 50x50 pixels -->
   <span class="logo-mini">
     <img src="{{asset('images/logokabtangerang.png')}}" alt="SPD" />
@@ -21,41 +21,25 @@
       <li class="dropdown notifications-menu">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
           <i class="fa fa-bell-o"></i>
-          <span class="label label-warning">10</span>
+          <span class="label label-warning">2</span>
         </a>
         <ul class="dropdown-menu">
-          <li class="header">You have 10 notifications</li>
+          <li class="header">Anda memiliki 2 notifikasi</li>
           <li>
             <!-- inner menu: contains the actual data -->
             <ul class="menu">
               <li>
                 <a href="#">
-                  <i class="fa fa-users text-aqua"></i> 5 new members joined today
+                  <i class="fa fa-users text-aqua"></i> 3 warga mendaftar hari ini
                 </a>
               </li>
               <li>
                 <a href="#">
-                  <i class="fa fa-warning text-yellow"></i> Very long description here that may not fit into the page and may cause design problems
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <i class="fa fa-users text-red"></i> 5 new members joined
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <i class="fa fa-shopping-cart text-green"></i> 25 sales made
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <i class="fa fa-user text-red"></i> You changed your username
+                  <i class="fa fa-users text-red"></i> 5 pengaduan belum diproses
                 </a>
               </li>
             </ul>
           </li>
-          <li class="footer"><a href="#">View all</a></li>
         </ul>
       </li>
 
@@ -63,14 +47,25 @@
       <li class="dropdown user user-menu">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
           <img src="{{ asset('/dist/img/user2-160x160.jpg') }}" class="user-image" alt="User Image">
-          <span class="hidden-xs">Anton</span>
+          @if(Session::has('akses'))
+            <span class="hidden-xs">{{ Session::get('namalogin') }}</span>
+          @endif
         </a>
         <ul class="dropdown-menu">
           <!-- User image -->
           <li class="user-header">
             <img src="{{ asset('/dist/img/user2-160x160.jpg') }}" class="img-circle" alt="User Image">
             <p>
-              Anton - User SKPD
+              @if(Session::has('akses'))
+                {{ Session::get('namalogin') }} -
+                @if(Session::get('akses')=="kesehatan")
+                  SKPD Kesehatan
+                @elseif(Session::get('akses')=="pendidikan")
+                  SKPD Pendidikan
+                @elseif(Session::get('akses')=="administrator")
+                  Administrator
+                @endif
+              @endif
               <small>Member since Nov. 2012</small>
             </p>
           </li>
@@ -78,7 +73,7 @@
           <!-- Menu Footer-->
           <li class="user-footer">
             <div class="pull-left">
-              <a href="#" class="btn btn-default btn-flat">Profile</a>
+              <a href="{{url('userskpdprofile')}}" class="btn btn-default btn-flat">Profile</a>
             </div>
             <div class="pull-right">
               <a href="{{ url('logout') }}" class="btn btn-default btn-flat">Sign out</a>

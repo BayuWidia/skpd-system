@@ -13,37 +13,25 @@ $(function () {
       value: 700,
       color: "#f56954",
       highlight: "#f56954",
-      label: "E-KTP & KK"
+      label: "BPJS Kesehatan"
     },
     {
       value: 500,
       color: "#00a65a",
       highlight: "#00a65a",
-      label: "Lalu Lintas"
+      label: "Pelayanan Administrasi"
     },
     {
       value: 400,
       color: "#f39c12",
       highlight: "#f39c12",
-      label: "Perizinan"
+      label: "Pelayanan Kesehatan"
     },
     {
       value: 600,
       color: "#00c0ef",
       highlight: "#00c0ef",
-      label: "Pendidikan"
-    },
-    {
-      value: 300,
-      color: "#3c8dbc",
-      highlight: "#3c8dbc",
-      label: "Teknologi"
-    },
-    {
-      value: 100,
-      color: "#d2d6de",
-      highlight: "#d2d6de",
-      label: "Lainnya"
+      label: "Pelayanan Obat"
     }
   ];
   var pieOptions = {
@@ -70,7 +58,7 @@ $(function () {
     //String - A legend template
     legendTemplate: "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<segments.length; i++){%><li><span style=\"background-color:<%=segments[i].fillColor%>\"></span><%if(segments[i].label){%><%=segments[i].label%><%}%></li><%}%></ul>",
     //String - A tooltip template
-    tooltipTemplate: "<%=value %> Pengaduan <%=label%>"
+    tooltipTemplate: "<%=value %> Pengaduan"
   };
   //Create pie or douhnut chart
   // You can switch between pie and douhnut using the method below.
@@ -82,18 +70,18 @@ $(function () {
   var area = new Morris.Area({
     element: 'revenue-chart',
     data: [
-      { y: '2015-01', a: 1, b: 3, c: 2, d: 6, e: 8 },
-      { y: '2015-02', a: 2,  b: 6, c: 8, d: 2, e: 3  },
-      { y: '2015-03', a: 5,  b: 2, c: 9, d: 5, e: 6  },
-      { y: '2015-04', a: 4,  b: 2, c: 3, d: 5, e: 8  },
-      { y: '2015-05', a: 7,  b: 7, c: 2, d: 8, e: 5  },
-      { y: '2015-06', a: 9,  b: 3, c: 7, d: 1, e: 2  },
-      { y: '2015-07', a: 7, b: 5, c: 8, d: 7, e: 1  }
+      { y: '2015-01', a: 1, b: 3, c: 2, d: 6},
+      { y: '2015-02', a: 2,  b: 6, c: 8, d: 2},
+      { y: '2015-03', a: 5,  b: 2, c: 9, d: 5},
+      { y: '2015-04', a: 4,  b: 2, c: 3, d: 5},
+      { y: '2015-05', a: 7,  b: 7, c: 2, d: 8},
+      { y: '2015-06', a: 9,  b: 3, c: 7, d: 1},
+      { y: '2015-07', a: 7, b: 5, c: 8, d: 7}
     ],
     xkey: 'y',
-    ykeys: ['a', 'b', 'c', 'd', 'e'],
-    labels: ['Pelayanan', 'Kesehatan', 'Lalu Lintas', 'Pendidikan', 'Teknologi'],
-    lineColors: ['#605ca8', '#00a65a', '#3c8dbc', '#f39c12', '#D81B60'],
+    ykeys: ['a', 'b', 'c', 'd'],
+    labels: ['BPJS Kesehatan', 'Pelayanan Administrasi', 'Pelayanan Kesehatan', 'Pelayanan Obat'],
+    lineColors: ['#f56954', '#00a65a', '#f39c12', '#00c0ef'],
     hideHover: 'auto'
   });
 

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
+<html lang="en">
+<head>
+  <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>SKPD Pengaduan Online | Kabupaten Tangerang</title>
     <!-- Tell the browser to be responsive to screen width -->
@@ -15,30 +15,29 @@
     <!-- Theme style -->
     <link rel="stylesheet" href="{{asset('dist/css/AdminLTE.css')}}">
     <link rel="stylesheet" href="{{asset('bootstrap/css/custom9tins.css')}}">
+    <link rel="stylesheet" href="{{asset('bootstrap/css/9tins.css')}}">
     <!-- iCheck -->
     <link rel="stylesheet" href="{{asset('plugins/iCheck/square/blue.css')}}">
-
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
-  </head>
-  <body class="skin-blue-light hold-transition login-page">
-    <div class="login-box">
-      <div class="login-logo">
-        <img src="{{asset('images/logologinkabtangerang.png')}}" alt="SPD" />
-        &nbsp;&nbsp;<b>Simpedu Online</b>
-      </div>
+</head>
+<body>
 
 
-      <div class="login-box-body">
+<div class="container">
+		<div class="left">
+      <div class="login-box">
+          <div class="login-logo">
+            <img src="{{asset('images/logologinkabtangerang.png')}}" alt="SPD" />
+            &nbsp;&nbsp;<b>Simpedu Online</b>
+          </div>
+        </div>
+		</div>
+		<div class="right">
+      <div class="login-box-body border">
         <p class="login-box-msg">Silahkan lakukan proses login</p>
         <form action="{{ url('login') }}" method="post">
           {!! csrf_field() !!}
           <div class="form-group has-feedback">
-            <input name="email" type="text" class="form-control" placeholder="Email">
+            <input name="email" type="email" class="form-control" placeholder="Email">
             <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
           </div>
           <div class="form-group has-feedback">
@@ -46,36 +45,19 @@
             <span class="glyphicon glyphicon-lock form-control-feedback"></span>
           </div>
           <div class="row">
-            <div class="col-xs-8">
-
-            </div><!-- /.col -->
-            <div class="col-xs-4">
+            <div class="col-xs-12">
               <button type="submit" class="btn btn-success btn-block btn-flat">Log In</button>
             </div><!-- /.col -->
           </div>
         </form>
-
-
         <a href="#">Lupa password? Klik disini</a><br>
-        <a href="{{ url('register') }}">Belum memiliki akun? Klik disini</a><br>
-
       </div><!-- /.login-box-body -->
-    </div><!-- /.login-box -->
+		</div> <!--/ .right -->
 
-    <!-- jQuery 2.1.4 -->
-    <script src="{{asset('plugins/jQuery/jQuery-2.1.4.min.js')}}"></script>
-    <!-- Bootstrap 3.3.5 -->
-    <script src="{{asset('bootstrap/js/bootstrap.min.js')}}"></script>
-    <!-- iCheck -->
-    <script src="{{asset('plugins/iCheck/icheck.min.js')}}"></script>
-    <script>
-      $(function () {
-        $('input').iCheck({
-          checkboxClass: 'icheckbox_square-blue',
-          radioClass: 'iradio_square-blue',
-          increaseArea: '20%' // optional
-        });
-      });
-    </script>
-  </body>
+	<div class="footer">
+		<h4><strong>Copyright © 20162017 <a href="http://9tins.com">9Tins Project</a>.</strong> All rights reserved.</h4>
+	</div>
+</div>
+
+</body>
 </html>

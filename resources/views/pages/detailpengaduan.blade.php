@@ -28,7 +28,7 @@
           <button type="button" class="close" data-dismiss="modal">&times;</button>
           <h4 class="modal-title">Mutasi Pengaduan Warga</h4>
         </div>
-        <form class="form" action="dudy.php" method="post">
+        <form class="form" action="#" method="post">
           <div>
             <div class="modal-body">
                   <div class="form-group">
@@ -42,11 +42,32 @@
                   </div>
             </div>
             <div class="modal-footer">
-              <button type="reset" class="btn btn-warning pull-left" data-dismiss="modal">Cancel</button>
+              <button type="reset" class="btn btn-default pull-left" data-dismiss="modal">Cancel</button>
               <button type="submit" class="btn btn-primary" id="set">Proses Mutasi Pengaduan</button>
             </div>
           </div>
         </form>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="modal modal-default fade" id="myModalVerifikasi" role="dialog">
+    <div class="modal-dialog">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Konfirmasi Verifikasi Pengaduan</h4>
+        </div>
+        <div class="modal-body">
+          Apakah anda yakin telah melakukan verifikasi terhadap pengaduan ini?
+        </div>
+        <div class="modal-footer">
+          <button type="reset" class="btn btn-default pull-left" data-dismiss="modal">Tidak</button>
+          <button type="submit" class="btn btn-primary" id="set">Ya, saya yakin!</button>
+        </div>
       </div>
 
     </div>
@@ -61,7 +82,7 @@
           <div class='user-block'>
             <img class='img-circle' src='{{asset('dist/img/user1-128x128.jpg')}}' alt='user image'>
             <span class='username'><a href="#">Bambang Pamungkis</a></span>
-            <span class='description'>24 Mei 2016 | Pemadaman Listrik</span>
+            <span class='description'>24 Mei 2016 | BPJS Kesehatan</span>
           </div><!-- /.user-block -->
           <div class='box-tools'>
             <button class='btn btn-box-tool' data-widget='collapse'><i class='fa fa-minus'></i></button>
@@ -71,7 +92,7 @@
         <div class='box-body'>
           <!-- post text -->
           <p>Yth. SKPD terkait,</p>
-          <p>Mohon bantuannya untuk menghubungi pihak PLN Untuk segera menyalakan kembali aliran listriknya di Wilayah Jalan songsi raya RT.011/05 Tambora, Tanah sereal Jakarta Barat dikarenakan telah sering mati lampu seperti hari ini, dari tadi siang mati lampu dan sampai sekarang belum menyala, sudah lebih dari 6 jam.</p>
+          <p>Mohon bantuannya untuk menghubungi bagian pelayanan BPJS pada rumah sakit contoh. Kartu kami dikatakan tidak dapat digunakan pada rumah sakit tersebut.</p>
           <p>Mohon ditindaklanjuti, terima kasih.</p>
 
 
@@ -80,24 +101,52 @@
             <b>Data Pendukung</b><br>
             <i class="text-muted">gambar.jpg</i>
             <div class="pull-right">
-              <button class="btn btn-danger btn-sm btn-flat" data-toggle="modal" data-target="#myModal" >Mutasi Pengaduan Ini</button>
+              @if(Session::has('akses'))
+                @if(Session::get('akses')!="administrator")
+                  <button class="btn btn-warning btn-sm btn-flat" data-toggle="modal" data-target="#myModalVerifikasi" >Verifikasi Pengaduan</button>
+                  <button class="btn btn-danger btn-sm btn-flat" data-toggle="modal" data-target="#myModal" >Mutasi Pengaduan Ini</button>
+                @endif
+              @endif
               <button class="btn btn-default btn-sm btn-flat">Download Data Pendukung</button>
             </div>
           </div><!-- /.attachment-block -->
 
-        </div><!-- /.box-body -->
-        <div class="box-footer">
-          <form action="#" method="post">
-            <img class="img-responsive img-circle img-sm" src="{{asset('dist/img/user4-128x128.jpg')}}" alt="alt text">
-            <!-- .img-push is used to add margin to elements next to floating images -->
-            <div class="img-push">
-              <textarea name="name" class="form-control" rows="5" cols="40" placeholder="Tulis tanggapan anda di sini.."></textarea>
-              <div class="footer pull-right" style="padding-top:5px;">
-                <button class="btn btn-primary btn-sm btn-flat">Kirim Tanggapan</button>
+
+        @if(Session::has('akses'))
+          @if(Session::get('akses')!="administrator")
+            <div class="box-footer">
+              <form action="#" method="post">
+                <img class="img-responsive img-circle img-sm" src="{{asset('dist/img/user4-128x128.jpg')}}" alt="alt text">
+                <!-- .img-push is used to add margin to elements next to floating images -->
+                <div class="img-push">
+                  <textarea name="name" class="form-control" rows="5" cols="40" placeholder="Tulis tanggapan anda di sini.."></textarea>
+                  <div class="footer pull-right" style="padding-top:5px;">
+                    <button class="btn btn-primary btn-sm btn-flat">Kirim Tanggapan</button>
+                  </div>
+                </div>
+              </form>
+            </div><!-- /.box-footer -->
+          @else
+            <div class='box-footer box-comments' style="border:1px solid #00a65a;">
+              <div style="padding-bottom:5px;">
+                <b>Tanggapan</b>
               </div>
+              <div class='box-comment'>
+                <!-- User image -->
+                <img class='img-circle img-sm' src='{{asset('dist/img/user3-128x128.jpg')}}' alt='user image'>
+                <div class='comment-text'>
+                  <span class="username">
+                    Administrator SKPD Pelayanan Publik
+                    <span class='text-muted pull-right'>25 April 2016</span>
+                  </span><!-- /.username -->
+                  It is a long established fact that a reader will be distracted
+                  by the readable content of a page when looking at its layout.
+                </div><!-- /.comment-text -->
+              </div><!-- /.box-comment -->
             </div>
-          </form>
-        </div><!-- /.box-footer -->
+          @endif
+        @endif
+        </div><!-- /.box-body -->
       </div><!-- /.box -->
     </div><!--/.col -->
 
@@ -115,12 +164,4 @@
   <!-- AdminLTE for demo purposes -->
   <script src="{{asset('dist/js/demo.js')}}"></script>
 
-  <script type="text/javascript">
-    $(function(){
-      $('a.hapus').click(function(){
-        var a = $(this).data('value');
-        $('#set').attr('href', "{{ url('/') }}/masterjabatan/hapusjabatan/"+a);
-      });
-    });
-  </script>
 @stop

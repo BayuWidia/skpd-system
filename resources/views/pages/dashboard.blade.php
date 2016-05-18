@@ -6,7 +6,15 @@
 
 @section('breadcrumb')
   <h1>
-    Halaman Utama Administrator SKPD
+    @if(Session::has('akses'))
+      @if(Session::get('akses')=="administrator")
+        Halaman Utama Administrator Utama
+      @elseif(Session::get('akses')=="kesehatan")
+        Halaman Utama Admin SKPD Kesehatan
+      @elseif(Session::get('akses')=="pendidikan")
+        Halaman Utama Admin SKPD Pendidikan
+      @endif
+    @endif
     <small>Data Statistik</small>
   </h1>
   <ol class="breadcrumb">
@@ -19,7 +27,7 @@
   <div class="row">
     <div class="col-lg-4 col-xs-12">
       <!-- small box -->
-      <div class="small-box bg-aqua">
+      <div class="small-box bg-teal">
         <div class="inner">
           <h3>150</h3>
           <p>Jumlah Pengaduan</p>
@@ -27,12 +35,12 @@
         <div class="icon">
           <i class="ion ion-speakerphone"></i>
         </div>
-        <a href="{{url('lihatpengaduan')}}" class="small-box-footer">Lihat Data Selengkapnya <i class="fa fa-arrow-circle-right"></i></a>
+        <a href="{{url('historipengaduan')}}" class="small-box-footer">Lihat Data Selengkapnya <i class="fa fa-arrow-circle-right"></i></a>
       </div>
     </div><!-- ./col -->
     <div class="col-lg-4 col-xs-12">
       <!-- small box -->
-      <div class="small-box bg-green">
+      <div class="small-box bg-purple">
         <div class="inner">
           <h3>53<sup style="font-size: 20px">%</sup></h3>
           <p>Pengaduan Terproses</p>
@@ -40,12 +48,12 @@
         <div class="icon">
           <i class="ion ion-stats-bars"></i>
         </div>
-        <a href="#" class="small-box-footer">Lihat Data Selengkapnya <i class="fa fa-arrow-circle-right"></i></a>
+        <a href="{{url('lihatpengaduan')}}" class="small-box-footer">Lihat Data Selengkapnya <i class="fa fa-arrow-circle-right"></i></a>
       </div>
     </div><!-- ./col -->
     <div class="col-lg-4 col-xs-12">
       <!-- small box -->
-      <div class="small-box bg-yellow">
+      <div class="small-box bg-maroon">
         <div class="inner">
           <h3>44</h3>
           <p>Pengguna Terdaftar</p>
@@ -53,7 +61,7 @@
         <div class="icon">
           <i class="ion ion-person-stalker"></i>
         </div>
-        <a href="#" class="small-box-footer">Lihat Data Selengkapnya <i class="fa fa-arrow-circle-right"></i></a>
+        <a href="{{url('datawarga')}}" class="small-box-footer">Lihat Data Selengkapnya <i class="fa fa-arrow-circle-right"></i></a>
       </div>
     </div><!-- ./col -->
   </div><!-- /.row -->
@@ -67,7 +75,7 @@
         <ul class="nav nav-tabs pull-right">
           <li class="active"><a href="#revenue-chart" data-toggle="tab">Grafik</a></li>
           {{-- <li><a href="#sales-chart" data-toggle="tab">Donut</a></li> --}}
-          <li class="pull-left header"><i class="fa fa-area-chart"></i> Presentase Pengaduan Terproses</li>
+          <li class="pull-left header"><i class="fa fa-area-chart"></i> Jumlah Pengaduan Per Topik</li>
         </ul>
         <div class="tab-content no-padding">
           <!-- Morris chart - Sales -->
@@ -107,8 +115,14 @@
                 gambar.jpg
               </p>
               <div class="pull-right">
-                <a href="#" class="btn btn-warning btn-sm btn-flat">Lihat Data Pendukung</a>
-                <a href="{{url('detailpengaduan')}}" class="btn btn-success btn-sm btn-flat">Proses Pengaduan</a>
+                <a href="#" class="btn btn-default btn-sm btn-flat">Download Data Pendukung</a>
+                @if(Session::has('akses'))
+                  @if(Session::get('akses')=="administrator")
+                    <a href="{{url('detailpengaduan')}}" class="btn btn-success btn-sm btn-flat">Lihat Pengaduan</a>
+                  @else
+                    <a href="{{url('detailpengaduan')}}" class="btn btn-success btn-sm btn-flat">Proses Pengaduan</a>
+                  @endif
+                @endif
               </div>
             </div><!-- /.attachment -->
           </div><!-- /.item -->
@@ -128,7 +142,13 @@
             </p>
             <div class="attachment">
               <div class="pull-right">
-                <a href="{{url('detailpengaduan')}}" class="btn btn-success btn-sm btn-flat">Proses Pengaduan</a>
+                @if(Session::has('akses'))
+                  @if(Session::get('akses')=="administrator")
+                    <a href="{{url('detailpengaduan')}}" class="btn btn-success btn-sm btn-flat">Lihat Pengaduan</a>
+                  @else
+                    <a href="{{url('detailpengaduan')}}" class="btn btn-success btn-sm btn-flat">Proses Pengaduan</a>
+                  @endif
+                @endif
               </div>
             </div><!-- /.attachment -->
           </div><!-- /.item -->
@@ -148,7 +168,13 @@
             </p>
             <div class="attachment">
               <div class="pull-right">
-                <a href="{{url('detailpengaduan')}}" class="btn btn-success btn-sm btn-flat">Proses Pengaduan</a>
+                @if(Session::has('akses'))
+                  @if(Session::get('akses')=="administrator")
+                    <a href="{{url('detailpengaduan')}}" class="btn btn-success btn-sm btn-flat">Lihat Pengaduan</a>
+                  @else
+                    <a href="{{url('detailpengaduan')}}" class="btn btn-success btn-sm btn-flat">Proses Pengaduan</a>
+                  @endif
+                @endif
               </div>
             </div><!-- /.attachment -->
           </div><!-- /.item -->
@@ -171,20 +197,37 @@
         </div><!-- /.box-header -->
         <div class="box-body">
           <div class="row">
-            <div class="col-md-8">
+            <div class="col-md-6">
               <div class="chart-responsive">
                 <canvas id="pieChart" height="150"></canvas>
               </div><!-- ./chart-responsive -->
             </div><!-- /.col -->
-            <div class="col-md-4">
-              <ul class="chart-legend clearfix">
-                <li><i class="fa fa-circle-o text-red"></i> E-KTP &amp; KK</li>
-                <li><i class="fa fa-circle-o text-green"></i> Lalu Lintas</li>
-                <li><i class="fa fa-circle-o text-yellow"></i> Perizinan</li>
-                <li><i class="fa fa-circle-o text-aqua"></i> Pendidikan</li>
-                <li><i class="fa fa-circle-o text-light-blue"></i> Kesehatan</li>
-                <li><i class="fa fa-circle-o text-gray"></i> Lainnya</li>
-              </ul>
+            <div class="col-md-6" style="padding-left:0px">
+              @if(Session::has('akses'))
+                @if(Session::get('akses')=="administrator")
+                  <ul class="chart-legend clearfix">
+                    <li><i class="fa fa-circle-o text-red"></i> E-KTP &amp; KK</li>
+                    <li><i class="fa fa-circle-o text-green"></i> Lalu Lintas</li>
+                    <li><i class="fa fa-circle-o text-yellow"></i> Perizinan</li>
+                    <li><i class="fa fa-circle-o text-aqua"></i> Pendidikan</li>
+                    <li><i class="fa fa-circle-o text-light-blue"></i> Kesehatan</li>
+                    <li><i class="fa fa-circle-o text-gray"></i> Lainnya</li>
+                  </ul>
+                @elseif(Session::get('akses')=="kesehatan")
+                  <ul class="chart-legend clearfix">
+                    <li><i class="fa fa-circle-o text-red"></i> BPJS Kesehatan</li>
+                    <li><i class="fa fa-circle-o text-green"></i> Pelayanan Administrasi</li>
+                    <li><i class="fa fa-circle-o text-yellow"></i> Pelayanan Kesehatan</li>
+                    <li><i class="fa fa-circle-o text-aqua"></i> Pelayanan Obat</li>
+                  </ul>
+                @elseif(Session::get('akses')=="pendidikan")
+                  <ul class="chart-legend clearfix">
+                    <li><i class="fa fa-circle-o text-red"></i> Pendidikan Dasar dan Menengah</li>
+                    <li><i class="fa fa-circle-o text-green"></i> Pendidikan Tinggi</li>
+                    <li><i class="fa fa-circle-o text-yellow"></i> Perundungan (Bullying)</li>
+                  </ul>
+                @endif
+              @endif
             </div><!-- /.col -->
           </div><!-- /.row -->
         </div><!-- /.box-body -->
@@ -200,54 +243,117 @@
                 </span>
               </a>
             </li>
-            <li>
-              <a href="{{url('pengaduanbytopik')}}">
-                Pelayanan E-KTP &amp; KK
-                <span class="pull-right text-red">
-                  <b>12%</b>
-                </span>
-              </a>
-            </li>
-            <li>
-              <a href="#">
-                Lalu Lintas
-                <span class="pull-right text-green">
-                  <b>87%</b>
-                </span>
-              </a>
-            </li>
-            <li>
-              <a href="#">
-                Perizinan
-                <span class="pull-right text-yellow">
-                  <b>55%</b>
-                </span>
-              </a>
-            </li>
-            <li>
-              <a href="#">
-                Pendidikan
-                <span class="pull-right text-red">
-                  <b>12%</b>
-                </span>
-              </a>
-            </li>
-            <li>
-              <a href="{{url('pengaduanbytopik')}}">
-                Kesehatan
-                <span class="pull-right text-green">
-                  <b>98%</b>
-                </span>
-              </a>
-            </li>
-            <li>
-              <a href="#">
-                Lainnya
-                <span class="pull-right text-yellow">
-                  <b>57%</b>
-                </span>
-              </a>
-            </li>
+            @if(Session::has('akses'))
+              @if(Session::get('akses')=="administrator")
+                <li>
+                  <a href="{{url('pengaduanbytopik')}}">
+                    Pelayanan E-KTP &amp; KK
+                    <span class="pull-right text-red">
+                      <b>12%</b>
+                    </span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    Lalu Lintas
+                    <span class="pull-right text-green">
+                      <b>87%</b>
+                    </span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    Perizinan
+                    <span class="pull-right text-yellow">
+                      <b>55%</b>
+                    </span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    Pendidikan
+                    <span class="pull-right text-red">
+                      <b>12%</b>
+                    </span>
+                  </a>
+                </li>
+                <li>
+                  <a href="{{url('pengaduanbytopik')}}">
+                    Kesehatan
+                    <span class="pull-right text-green">
+                      <b>98%</b>
+                    </span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    Lainnya
+                    <span class="pull-right text-yellow">
+                      <b>57%</b>
+                    </span>
+                  </a>
+                </li>
+
+              @elseif(Session::get('akses')=="kesehatan")
+                <li>
+                  <a href="{{url('pengaduanbytopik')}}">
+                    BPJS Kesehatan
+                    <span class="pull-right text-red">
+                      <b>12%</b>
+                    </span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    Pelayanan Administrasi
+                    <span class="pull-right text-green">
+                      <b>87%</b>
+                    </span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    Pelayanan Kesehatan
+                    <span class="pull-right text-yellow">
+                      <b>55%</b>
+                    </span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    Pelayanan Obat
+                    <span class="pull-right text-red">
+                      <b>12%</b>
+                    </span>
+                  </a>
+                </li>
+              @elseif(Session::get('akses')=="pendidikan")
+                <li>
+                  <a href="{{url('pengaduanbytopik')}}">
+                    Pendidikan Dasar dan Menengah
+                    <span class="pull-right text-red">
+                      <b>12%</b>
+                    </span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    Pendidikan Tinggi
+                    <span class="pull-right text-green">
+                      <b>87%</b>
+                    </span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    Perundungan (Bullying)
+                    <span class="pull-right text-yellow">
+                      <b>55%</b>
+                    </span>
+                  </a>
+                </li>
+              @endif
+            @endif
 
           </ul>
         </div><!-- /.footer -->
@@ -257,7 +363,7 @@
         <div class="box-header with-border">
           <h3 class="box-title"><i class="fa fa-user"></i> &nbsp;Identitas Pelapor</h3>
           <div class="box-tools pull-right">
-            <span class="label label-warning">8 Pelapor Baru</span>
+            <span class="label label-warning">8 Pendaftar Baru</span>
             <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
             <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
           </div>
@@ -265,8 +371,13 @@
         <div class="box-body no-padding">
           <ul class="users-list clearfix">
             <li>
+              <img src="dist/img/user4-128x128.jpg" alt="User Image">
+              <a class="users-list-name" href="{{url('wargaprofile')}}">Amanda Satyarini</a>
+              <span class="users-list-date">15 Jan</span>
+            </li>
+            <li>
               <img src="dist/img/user1-128x128.jpg" alt="User Image">
-              <a class="users-list-name" href="#">Alexander Pierce</a>
+              <a class="users-list-name" href="{{url('wargaprofile')}}">Alexander Pierce</a>
               <span class="users-list-date">Today</span>
             </li>
             <li>
@@ -295,11 +406,6 @@
               <span class="users-list-date">14 Jan</span>
             </li>
             <li>
-              <img src="dist/img/user4-128x128.jpg" alt="User Image">
-              <a class="users-list-name" href="#">Nora</a>
-              <span class="users-list-date">15 Jan</span>
-            </li>
-            <li>
               <img src="dist/img/user3-128x128.jpg" alt="User Image">
               <a class="users-list-name" href="#">Nadia</a>
               <span class="users-list-date">15 Jan</span>
@@ -307,16 +413,17 @@
           </ul><!-- /.users-list -->
         </div><!-- /.box-body -->
         <div class="box-footer text-center">
-          <button type="button" name="button" class="btn btn-primary">
+          <a class="btn btn-primary" href="{{url('datawarga')}}">
             <i class="fa fa-eye"></i>&nbsp;&nbsp;Lihat Semua Identitas Pelapor
-          </button>
+          </a>
         </div><!-- /.box-footer -->
       </div><!--/.box -->
     </section><!-- right col -->
   </div><!-- /.row (main row) -->
 
-  <script src="{{ asset('/plugins/jQuery/jQuery-2.1.4.min.js') }}"></script>
   <!-- jQuery UI 1.11.4 -->
+  <script src="{{ asset('/plugins/jQuery/jQuery-2.1.4.min.js') }}"></script>
+  {{-- <script src="{{ asset('/plugins/jQueryUI/jquery-ui.min.js') }}"></script> --}}
   <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
   <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
   <script>
@@ -351,7 +458,15 @@
   <script src="{{ asset('dist/js/app.min.js') }}"></script>
   <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
   {{-- <script src="{{ asset('/dist/js/pages/dashboard.js') }}"></script> --}}
-  <script src="{{ asset('dist/js/pages/dashboard2.js') }}"></script>
+  @if(Session::has('akses'))
+    @if(Session::get('akses')=="kesehatan")
+      <script src="{{ asset('dist/js/pages/dashboardkesehatan.js') }}"></script>
+    @elseif(Session::get('akses')=="pendidikan")
+      <script src="{{ asset('dist/js/pages/dashboardpendidikan.js') }}"></script>
+    @elseif(Session::get('akses')=="administrator")
+      <script src="{{ asset('dist/js/pages/dashboard2.js') }}"></script>
+    @endif
+  @endif
   <!-- AdminLTE for demo purposes -->
   <script src="{{ asset('/dist/js/demo.js') }}"></script>
 @stop
