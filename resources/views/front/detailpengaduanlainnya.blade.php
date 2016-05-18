@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>SIMPEDU | Detail Pengaduan</title>
+    <title>SIMPEDU | Lihat Semua Pengduan Lainnya</title>
     @include('includes.head')
     <link rel="stylesheet" href="{{asset('dist/css/customcss.css')}}" media="screen" title="no title" charset="utf-8">
   </head>
@@ -49,123 +49,289 @@
               <div class="col-md-12">
                 <ol class="breadcrumb">
                   <li><a href="{{url('/')}}"><i class="fa fa-dashboard"></i> Halaman Utama</a></li>
-                  <li class="active">Detail Pengaduan Warga</li>
+                  <li class="active">Detail Pengaduan Lainnya</li>
                 </ol>
               </div>
             </div>
 
             <div class="row">
               <div class="col-md-9">
-                <div class="box box-primary">
-                  <div class="box-header with-border">
-                    <h3 class="box-title">Semua Pengaduan Dengan Topik : Kependudukan</h3>
+                <div class="col-md-4">
+                  <!-- Widget: user widget style 1 -->
+                  <div class="box box-widget widget-user-2">
+                    <!-- Add the bg color to the header using any of the bg-* classes -->
+                    <div class="widget-user-header bg-primary">
+                      <div class="widget-user-image">
+                        <img class="img-circle" src="{{asset('dist/img/Architecture_256.png')}}" alt="User Avatar">
+                      </div>
+                      <!-- /.widget-user-image -->
+                      <h3 class="widget-user-username">SKPD</h3>
+                      <h5 class="widget-user-desc">Kependudukan</h5>
+                    </div>
+                    <div class="box-footer no-padding">
+                      <ul class="nav nav-stacked">
+                        <li><a href="{{url('viewall/topik-aduan')}}">Jumlah Topik Pengaduan<span class="pull-right badge bg-blue">54</span></a></li>
+                        <li><a href="#">Belum Ditanggapi <span class="pull-right badge bg-red">30</span></a></li>
+                        <li><a href="#">Sudah Ditanggapi <span class="pull-right badge bg-green">24</span></a></li>
+                      </ul>
+                    </div>
                   </div>
-                  <div class="box-body">
-                    <div class="post">
-                      <div class="user-block">
-                        <span class='username' style="margin-left:0px;">
-                          Permintaan Informasi Mengenai Pemadaman Listrik Di Kabupaten Tangerang
-                        </span>
-                        <span class='description' style="margin-left:0px;">
-                          Kategori Kependudukan - 24 April 2016
-                        </span>
-                        <span class='description' style="margin-left:0px; padding-top:3px;">
-                          <span class="label bg-green">Telah ditanggapi</span>
-                        </span>
-                      </div><!-- /.user-block -->
-                      <p>
-                        Yth. PT PLN (Persero), Halo PLN. Sampai kapan berakhir Pemadaman aliran listrik di kota palu Sulawesi Tengah ? Dunia terasa sudah mau kiamat kalau kota palu gelap gulita. Pelapor: Sudarsono Himawan,SE Aparatur Sipil Negara di unit kerja Badan Pemberdayaan Masyarakat ...
-                      </p>
-                      <p>
-                        <a href="{{url('detail/pengaduan-warga')}}">[Selengkapnya]</a>
-                      </p>
-                    </div><!-- /.post -->
-                    <div class="post">
-                      <div class="user-block">
-                        <span class='username' style="margin-left:0px;">
-                          Jalan Dander Ngasem belum ada lampu penerangan jalan
-                        </span>
-                        <span class='description' style="margin-left:0px;">
-                          Kategori Kependudukan - 24 April 2016
-                        </span>
-                        <span class='description' style="margin-left:0px; padding-top:3px;">
-                          <span class="label bg-red">Belum ditanggapi</span>
-                        </span>
-                      </div><!-- /.user-block -->
-                      <p>
-                        Yth. Dinas Pekerjaan Umum Kab. Bojonegoro, kayangan api minta jalan dander ke ngasem di kasih lampu jalan sepanjang 10km dander ke barat/ngasem blm ada lampu penerangan jalan. Mohon ditindaklanjuti, terima kasih...
-                      </p>
-                      <p>
-                        <a href="{{url('detail/pengaduan-warga')}}">[Selengkapnya]</a>
-                      </p>
-                    </div><!-- /.post -->
-                    <div class="post">
-                      <div class="user-block">
-                        <span class='username' style="margin-left:0px;">
-                          Listrik Belum Terpasang
-                        </span>
-                        <span class='description' style="margin-left:0px;">
-                          Kategori Kependudukan - 24 April 2016
-                        </span>
-                        <span class='description' style="margin-left:0px; padding-top:3px;">
-                          <span class="label bg-green">Telah ditanggapi</span>
-                        </span>
-                      </div><!-- /.user-block -->
-                      <p>
-                        Yth. Kementerian Badan Usaha Milik Negara (BUMN), Saya, Herman Syahputra, alamat Jalan Sidomulyo gang Sahabat Lingkungan 24 Tj. Mulia- Medandeli, Medan (Sumatera Utara) No KTP : xxx Tanggal permohonan pasang baru : 29-02-2016 No registrasi : ...
-                      </p>
-                      <p>
-                        <a href="{{url('detail/pengaduan-warga')}}">[Selengkapnya]</a>
-                      </p>
-                    </div><!-- /.post -->
-                    <div class="post">
-                      <div class="user-block">
-                        <span class='username' style="margin-left:0px;">
-                          Permintaan Informasi Tentang Penambahan Anggota Keluarga
-                        </span>
-                        <span class='description' style="margin-left:0px;">
-                          Kategori Kependudukan - 24 April 2016
-                        </span>
-                        <span class='description' style="margin-left:0px; padding-top:3px;">
-                          <span class="label bg-red">Belum ditanggapi</span>
-                        </span>
-                      </div><!-- /.user-block -->
-                      <p>
-                        Yth. BPJS Kesehatan KC Prabumulih, SAYA MAU TANYA APA SYARAT PENDAFTARAN UNTUK PENAMBAHAN ANGGOTA KELUARGA PESERTA MANDIRI/ PBPU BPJS KESEHATAN? Mohon informasinya, terima kasih ...
-                      </p>
-                      <p>
-                        <a href="{{url('detail/pengaduan-warga')}}">[Selengkapnya]</a>
-                      </p>
-                    </div><!-- /.post -->
-                    <div class="post">
-                      <div class="user-block">
-                        <span class='username' style="margin-left:0px;">
-                          Kapan Tunjangan Sertifikasi Turun
-                        </span>
-                        <span class='description' style="margin-left:0px;">
-                          Kategori Kependudukan - 24 April 2016
-                        </span>
-                        <span class='description' style="margin-left:0px; padding-top:3px;">
-                          <span class="label bg-green">Telah ditanggapi</span>
-                        </span>
-                      </div><!-- /.user-block -->
-                      <p>
-                        Yth. Dinas Pendidikan (Disdik) Kota Bandung, pak wali kenapa uang sertifikasi guru guru kota bandung blm cair Mohon ditindaklanjuti, terima kasih ...
-                      </p>
-                      <p>
-                        <a href="{{url('detail/pengaduan-warga')}}">[Selengkapnya]</a>
-                      </p>
-                    </div><!-- /.post -->
+                  <!-- /.widget-user -->
+                </div>
+                <div class="col-md-4">
+                  <!-- Widget: user widget style 1 -->
+                  <div class="box box-widget widget-user-2">
+                    <!-- Add the bg color to the header using any of the bg-* classes -->
+                    <div class="widget-user-header bg-primary">
+                      <div class="widget-user-image">
+                        <img class="img-circle" src="{{asset('dist/img/Architecture_256.png')}}" alt="User Avatar">
+                      </div>
+                      <!-- /.widget-user-image -->
+                      <h3 class="widget-user-username">SKPD</h3>
+                      <h5 class="widget-user-desc">Kesehatan</h5>
+                    </div>
+                    <div class="box-footer no-padding">
+                      <ul class="nav nav-stacked">
+                        <li><a href="{{url('viewall/topik-aduan')}}">Jumlah Topik Pengaduan<span class="pull-right badge bg-blue">81</span></a></li>
+                        <li><a href="#">Belum Ditanggapi <span class="pull-right badge bg-red">50</span></a></li>
+                        <li><a href="#">Sudah Ditanggapi <span class="pull-right badge bg-green">31</span></a></li>
+                      </ul>
+                    </div>
                   </div>
-                  <div class="box-footer">
-                    <ul class="pagination pagination-sm no-margin pull-right">
-                      <li><a href="#">«</a></li>
-                      <li><a href="#">1</a></li>
-                      <li><a href="#">2</a></li>
-                      <li><a href="#">3</a></li>
-                      <li><a href="#">»</a></li>
-                    </ul>
+                  <!-- /.widget-user -->
+                </div>
+                <div class="col-md-4">
+                  <!-- Widget: user widget style 1 -->
+                  <div class="box box-widget widget-user-2">
+                    <!-- Add the bg color to the header using any of the bg-* classes -->
+                    <div class="widget-user-header bg-primary">
+                      <div class="widget-user-image">
+                        <img class="img-circle" src="{{asset('dist/img/Architecture_256.png')}}" alt="User Avatar">
+                      </div>
+                      <!-- /.widget-user-image -->
+                      <h3 class="widget-user-username">SKPD</h3>
+                      <h5 class="widget-user-desc">Ketenagakerjaan</h5>
+                    </div>
+                    <div class="box-footer no-padding">
+                      <ul class="nav nav-stacked">
+                        <li><a href="{{url('viewall/topik-aduan')}}">Jumlah Topik Pengaduan<span class="pull-right badge bg-blue">12</span></a></li>
+                        <li><a href="#">Belum Ditanggapi <span class="pull-right badge bg-red">10</span></a></li>
+                        <li><a href="#">Sudah Ditanggapi <span class="pull-right badge bg-green">2</span></a></li>
+                      </ul>
+                    </div>
                   </div>
+                  <!-- /.widget-user -->
+                </div>
+                <div class="col-md-4">
+                  <!-- Widget: user widget style 1 -->
+                  <div class="box box-widget widget-user-2">
+                    <!-- Add the bg color to the header using any of the bg-* classes -->
+                    <div class="widget-user-header bg-green">
+                      <div class="widget-user-image">
+                        <img class="img-circle" src="{{asset('dist/img/Architecture_256.png')}}" alt="User Avatar">
+                      </div>
+                      <!-- /.widget-user-image -->
+                      <h3 class="widget-user-username">SKPD</h3>
+                      <h5 class="widget-user-desc">Pendidikan</h5>
+                    </div>
+                    <div class="box-footer no-padding">
+                      <ul class="nav nav-stacked">
+                        <li><a href="{{url('viewall/topik-aduan')}}">Jumlah Topik Pengaduan<span class="pull-right badge bg-blue">90</span></a></li>
+                        <li><a href="#">Belum Ditanggapi <span class="pull-right badge bg-red">80</span></a></li>
+                        <li><a href="#">Sudah Ditanggapi <span class="pull-right badge bg-green">10</span></a></li>
+                      </ul>
+                    </div>
+                  </div>
+                  <!-- /.widget-user -->
+                </div>
+                <div class="col-md-4">
+                  <!-- Widget: user widget style 1 -->
+                  <div class="box box-widget widget-user-2">
+                    <!-- Add the bg color to the header using any of the bg-* classes -->
+                    <div class="widget-user-header bg-green">
+                      <div class="widget-user-image">
+                        <img class="img-circle" src="{{asset('dist/img/Architecture_256.png')}}" alt="User Avatar">
+                      </div>
+                      <!-- /.widget-user-image -->
+                      <h3 class="widget-user-username">SKPD</h3>
+                      <h5 class="widget-user-desc">Jalan</h5>
+                    </div>
+                    <div class="box-footer no-padding">
+                      <ul class="nav nav-stacked">
+                        <li><a href="{{url('viewall/topik-aduan')}}">Jumlah Topik Pengaduan<span class="pull-right badge bg-blue">120</span></a></li>
+                        <li><a href="#">Belum Ditanggapi <span class="pull-right badge bg-red">110</span></a></li>
+                        <li><a href="#">Sudah Ditanggapi <span class="pull-right badge bg-green">10</span></a></li>
+                      </ul>
+                    </div>
+                  </div>
+                  <!-- /.widget-user -->
+                </div>
+                <div class="col-md-4">
+                  <!-- Widget: user widget style 1 -->
+                  <div class="box box-widget widget-user-2">
+                    <!-- Add the bg color to the header using any of the bg-* classes -->
+                    <div class="widget-user-header bg-green">
+                      <div class="widget-user-image">
+                        <img class="img-circle" src="{{asset('dist/img/Architecture_256.png')}}" alt="User Avatar">
+                      </div>
+                      <!-- /.widget-user-image -->
+                      <h3 class="widget-user-username">SKPD</h3>
+                      <h5 class="widget-user-desc">Ketenagakerjaan</h5>
+                    </div>
+                    <div class="box-footer no-padding">
+                      <ul class="nav nav-stacked">
+                        <li><a href="{{url('viewall/topik-aduan')}}">Jumlah Topik Pengaduan<span class="pull-right badge bg-blue">12</span></a></li>
+                        <li><a href="#">Belum Ditanggapi <span class="pull-right badge bg-red">10</span></a></li>
+                        <li><a href="#">Sudah Ditanggapi <span class="pull-right badge bg-green">2</span></a></li>
+                      </ul>
+                    </div>
+                  </div>
+                  <!-- /.widget-user -->
+                </div>
+
+                <div class="col-md-4">
+                  <!-- Widget: user widget style 1 -->
+                  <div class="box box-widget widget-user-2">
+                    <!-- Add the bg color to the header using any of the bg-* classes -->
+                    <div class="widget-user-header bg-orange">
+                      <div class="widget-user-image">
+                        <img class="img-circle" src="{{asset('dist/img/Architecture_256.png')}}" alt="User Avatar">
+                      </div>
+                      <!-- /.widget-user-image -->
+                      <h3 class="widget-user-username">SKPD</h3>
+                      <h5 class="widget-user-desc">Perdangan</h5>
+                    </div>
+                    <div class="box-footer no-padding">
+                      <ul class="nav nav-stacked">
+                        <li><a href="{{url('viewall/topik-aduan')}}">Jumlah Topik Pengaduan<span class="pull-right badge bg-blue">20</span></a></li>
+                        <li><a href="#">Belum Ditanggapi <span class="pull-right badge bg-red">10</span></a></li>
+                        <li><a href="#">Sudah Ditanggapi <span class="pull-right badge bg-green">10</span></a></li>
+                      </ul>
+                    </div>
+                  </div>
+                  <!-- /.widget-user -->
+                </div>
+                <div class="col-md-4">
+                  <!-- Widget: user widget style 1 -->
+                  <div class="box box-widget widget-user-2">
+                    <!-- Add the bg color to the header using any of the bg-* classes -->
+                    <div class="widget-user-header bg-orange">
+                      <div class="widget-user-image">
+                        <img class="img-circle" src="{{asset('dist/img/Architecture_256.png')}}" alt="User Avatar">
+                      </div>
+                      <!-- /.widget-user-image -->
+                      <h3 class="widget-user-username">SKPD</h3>
+                      <h5 class="widget-user-desc">Pengaduan Listrik</h5>
+                    </div>
+                    <div class="box-footer no-padding">
+                      <ul class="nav nav-stacked">
+                        <li><a href="{{url('viewall/topik-aduan')}}">Jumlah Topik Pengaduan<span class="pull-right badge bg-blue">40</span></a></li>
+                        <li><a href="#">Belum Ditanggapi <span class="pull-right badge bg-red">30</span></a></li>
+                        <li><a href="#">Sudah Ditanggapi <span class="pull-right badge bg-green">10</span></a></li>
+                      </ul>
+                    </div>
+                  </div>
+                  <!-- /.widget-user -->
+                </div>
+                <div class="col-md-4">
+                  <!-- Widget: user widget style 1 -->
+                  <div class="box box-widget widget-user-2">
+                    <!-- Add the bg color to the header using any of the bg-* classes -->
+                    <div class="widget-user-header bg-orange">
+                      <div class="widget-user-image">
+                        <img class="img-circle" src="{{asset('dist/img/Architecture_256.png')}}" alt="User Avatar">
+                      </div>
+                      <!-- /.widget-user-image -->
+                      <h3 class="widget-user-username">SKPD</h3>
+                      <h5 class="widget-user-desc">Bangunan Rusak</h5>
+                    </div>
+                    <div class="box-footer no-padding">
+                      <ul class="nav nav-stacked">
+                        <li><a href="{{url('viewall/topik-aduan')}}">Jumlah Topik Pengaduan<span class="pull-right badge bg-blue">3</span></a></li>
+                        <li><a href="#">Belum Ditanggapi <span class="pull-right badge bg-red">1</span></a></li>
+                        <li><a href="#">Sudah Ditanggapi <span class="pull-right badge bg-green">2</span></a></li>
+                      </ul>
+                    </div>
+                  </div>
+                  <!-- /.widget-user -->
+                </div>
+
+                <div class="col-md-4">
+                  <!-- Widget: user widget style 1 -->
+                  <div class="box box-widget widget-user-2">
+                    <!-- Add the bg color to the header using any of the bg-* classes -->
+                    <div class="widget-user-header bg-orange">
+                      <div class="widget-user-image">
+                        <img class="img-circle" src="{{asset('dist/img/Architecture_256.png')}}" alt="User Avatar">
+                      </div>
+                      <!-- /.widget-user-image -->
+                      <h3 class="widget-user-username">SKPD</h3>
+                      <h5 class="widget-user-desc">Pelayanan Warga</h5>
+                    </div>
+                    <div class="box-footer no-padding">
+                      <ul class="nav nav-stacked">
+                        <li><a href="{{url('viewall/topik-aduan')}}">Jumlah Topik Pengaduan<span class="pull-right badge bg-blue">45</span></a></li>
+                        <li><a href="#">Belum Ditanggapi <span class="pull-right badge bg-red">34</span></a></li>
+                        <li><a href="#">Sudah Ditanggapi <span class="pull-right badge bg-green">11</span></a></li>
+                      </ul>
+                    </div>
+                  </div>
+                  <!-- /.widget-user -->
+                </div>
+                <div class="col-md-4">
+                  <!-- Widget: user widget style 1 -->
+                  <div class="box box-widget widget-user-2">
+                    <!-- Add the bg color to the header using any of the bg-* classes -->
+                    <div class="widget-user-header bg-orange">
+                      <div class="widget-user-image">
+                        <img class="img-circle" src="{{asset('dist/img/Architecture_256.png')}}" alt="User Avatar">
+                      </div>
+                      <!-- /.widget-user-image -->
+                      <h3 class="widget-user-username">SKPD</h3>
+                      <h5 class="widget-user-desc">Pariwisata</h5>
+                    </div>
+                    <div class="box-footer no-padding">
+                      <ul class="nav nav-stacked">
+                        <li><a href="{{url('viewall/topik-aduan')}}">Jumlah Topik Pengaduan<span class="pull-right badge bg-blue">76</span></a></li>
+                        <li><a href="#">Belum Ditanggapi <span class="pull-right badge bg-red">70</span></a></li>
+                        <li><a href="#">Sudah Ditanggapi <span class="pull-right badge bg-green">6</span></a></li>
+                      </ul>
+                    </div>
+                  </div>
+                  <!-- /.widget-user -->
+                </div>
+                <div class="col-md-4">
+                  <!-- Widget: user widget style 1 -->
+                  <div class="box box-widget widget-user-2">
+                    <!-- Add the bg color to the header using any of the bg-* classes -->
+                    <div class="widget-user-header bg-orange">
+                      <div class="widget-user-image">
+                        <img class="img-circle" src="{{asset('dist/img/Architecture_256.png')}}" alt="User Avatar">
+                      </div>
+                      <!-- /.widget-user-image -->
+                      <h3 class="widget-user-username">SKPD</h3>
+                      <h5 class="widget-user-desc">Kebudayaan</h5>
+                    </div>
+                    <div class="box-footer no-padding">
+                      <ul class="nav nav-stacked">
+                        <li><a href="{{url('viewall/topik-aduan')}}">Jumlah Topik Pengaduan<span class="pull-right badge bg-blue">23</span></a></li>
+                        <li><a href="#">Belum Ditanggapi <span class="pull-right badge bg-red">12</span></a></li>
+                        <li><a href="#">Sudah Ditanggapi <span class="pull-right badge bg-green">11</span></a></li>
+                      </ul>
+                    </div>
+                  </div>
+                  <!-- /.widget-user -->
+                </div>
+
+                <div class="col-md-4">
+                  <!-- Widget: user widget style 1 -->
+                  <ul class="pagination pagination-sm no-margin pull-center pull-bottom">
+                    <li><a href="#">&laquo;</a></li>
+                    <li><a href="#">1</a></li>
+                    <li><a href="#">2</a></li>
+                    <li><a href="#">3</a></li>
+                    <li><a href="#">&raquo;</a></li>
+                  </ul>
                 </div>
               </div>
 
