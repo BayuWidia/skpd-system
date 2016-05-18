@@ -40,6 +40,10 @@ Route::get('viewall/topik-aduan', function(){
   return view('front.lihatsemuabytopik');
 });
 
+Route::get('detail/semua-pengaduan-lainnya', function(){
+  return view('front.detailpengaduanlainnya');
+});
+
 Route::get('semualaporan', function(){
   return view('front.semualaporan');
 });
